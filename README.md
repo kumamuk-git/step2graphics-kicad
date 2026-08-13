@@ -31,8 +31,6 @@ https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/main/repositor
 
 追加後、リポジトリを`STEP Projection Importer Repository`へ切り替えて更新すると、`STEP Projection Importer`を一覧からインストールできます。
 
-このURLをKiCadから利用するには、GitHubリポジトリが公開されている必要があります。非公開のまま運用する場合は、認証なしでアクセス可能な社内HTTPサーバー等へ`repository.json`、`packages.json`、ZIPを配置し、`build_release.ps1 -RepositoryBaseUrl <公開ベースURL>`でURLを差し替えてください。
-
 ### ZIPからインストール
 
 1. [最新のPCMパッケージ](kicad_plugin/pcm/dist/step2graphics-kicad10-action-plugin-0.3.0.zip)を取得する。
