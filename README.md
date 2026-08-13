@@ -51,34 +51,3 @@ https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/main/repositor
 4. 「読み込む」を押す。
 
 生成線分は既定で`STEP投影: ファイル名`という1グループになり、そのグループが選択されます。同一直線上の線分は、既定で端点許容差`0.001 mm`、角度許容差`0.05°`の範囲で統合されます。角をまたいだ統合は行いません。
-
-## 開発
-
-### 構成
-
-```text
-kicad_plugin/
-├─ plugin/  # Action Plugin本体
-├─ pcm/     # PCMメタデータ・配布ファイル生成
-└─ tests/                 # 投影・線分統合テスト
-```
-
-### テスト
-
-OCPをインストール済みのPythonで実行します。
-
-```powershell
-python -m unittest discover -s .\kicad_plugin\tests -v
-```
-
-### PCMリポジトリ一式の作成
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\kicad_plugin\pcm\build_release.ps1
-```
-
-このスクリプトは次を生成します。
-
-- `kicad_plugin/pcm/dist/*.zip` — インストールパッケージ
-- `packages.json` — パッケージ一覧、ダウンロードURL、SHA-256、サイズ
-- `repository.json` — KiCadへ登録するリポジトリ定義
