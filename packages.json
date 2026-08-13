@@ -1,0 +1,43 @@
+{
+    "packages":  [
+                     {
+                         "$schema":  "https://go.kicad.org/pcm/schemas/v2",
+                         "name":  "STEP Projection Importer",
+                         "description":  "Preview and import an orthographic STEP projection as grouped PCB graphics.",
+                         "description_full":  "A KiCad 10 Action Plugin that accepts STEP files by picker or drag and drop, previews the selected projection plane, merges touching collinear segments, and adds the result to the PCB Editor as a selectable group. OpenCASCADE runs locally in an external Python process. Docker and an external conversion server are not required.",
+                         "identifier":  "jp.tasko.step2graphics",
+                         "type":  "plugin",
+                         "author":  {
+                                        "name":  "TASKO",
+                                        "contact":  {
+
+                                                    }
+                                    },
+                         "license":  "Internal use",
+                         "resources":  {
+                                           "homepage":  "https://github.com/kumamuk-git/step2graphics-kicad",
+                                           "repository":  "https://github.com/kumamuk-git/step2graphics-kicad"
+                                       },
+                         "tags":  [
+                                      "pcb",
+                                      "step",
+                                      "projection"
+                                  ],
+                         "versions":  [
+                                          {
+                                              "version":  "0.3.0",
+                                              "status":  "testing",
+                                              "kicad_version":  "10.0",
+                                              "platforms":  [
+                                                                "windows"
+                                                            ],
+                                              "runtime":  "swig",
+                                              "download_url":  "https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/main/kicad_plugin/pcm/dist/step2graphics-kicad10-action-plugin-0.3.0.zip",
+                                              "download_sha256":  "02d6f615789124a5d50752c9728dac38bfea923ce70519200cb27b412fc9515b",
+                                              "download_size":  13097,
+                                              "install_size":  41047
+                                          }
+                                      ]
+                     }
+                 ]
+}

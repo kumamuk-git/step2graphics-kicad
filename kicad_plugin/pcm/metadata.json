@@ -10,7 +10,10 @@
     "contact": {}
   },
   "license": "Internal use",
-  "resources": {},
+  "resources": {
+    "homepage": "https://github.com/kumamuk-git/step2graphics-kicad",
+    "repository": "https://github.com/kumamuk-git/step2graphics-kicad"
+  },
   "tags": [
     "pcb",
     "step",

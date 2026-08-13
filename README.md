@@ -21,6 +21,20 @@ STEP解析にはOpenCASCADEを使用します。初回実行時にプラグイ�
 
 ## インストール
 
+### PCMリポジトリからインストール
+
+KiCadの「プラグイン＆コンテンツ マネージャー」から「リポジトリを管理」を開き、次のURLを追加します。
+
+```text
+https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/main/repository.json
+```
+
+追加後、リポジトリを`STEP Projection Importer Repository`へ切り替えて更新すると、`STEP Projection Importer`を一覧からインストールできます。
+
+このURLをKiCadから利用するには、GitHubリポジトリが公開されている必要があります。非公開のまま運用する場合は、認証なしでアクセス可能な社内HTTPサーバー等へ`repository.json`、`packages.json`、ZIPを配置し、`build_release.ps1 -RepositoryBaseUrl <公開ベースURL>`でURLを差し替えてください。
+
+### ZIPからインストール
+
 1. [最新のPCMパッケージ](kicad_plugin/pcm/dist/step2graphics-kicad10-action-plugin-0.3.0.zip)を取得する。
 2. KiCadの「プラグイン＆コンテンツ マネージャー」を開く。
 3. 「ファイルからインストール…」でZIPを選ぶ。
@@ -45,7 +59,7 @@ STEP解析にはOpenCASCADEを使用します。初回実行時にプラグイ�
 ```text
 kicad_plugin/
 ├─ plugin/  # Action Plugin本体
-├─ pcm/     # PCMメタデータ・パッケージ作成
+├─ pcm/     # PCMメタデータ・配布ファイル生成
 └─ tests/                 # 投影・線分統合テスト
 ```
 
@@ -57,10 +71,14 @@ OCPをインストール済みのPythonで実行します。
 python -m unittest discover -s .\kicad_plugin\tests -v
 ```
 
-### PCMパッケージ作成
+### PCMリポジトリ一式の作成
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\kicad_plugin\pcm\build_pcm_package.ps1
+powershell -ExecutionPolicy Bypass -File .\kicad_plugin\pcm\build_release.ps1
 ```
 
-出力先は`kicad_plugin/pcm/dist/`です。
+このスクリプトは次を生成します。
+
+- `kicad_plugin/pcm/dist/*.zip` — インストールパッケージ
+- `packages.json` — パッケージ一覧、ダウンロードURL、SHA-256、サイズ
+- `repository.json` — KiCadへ登録するリポジトリ定義
