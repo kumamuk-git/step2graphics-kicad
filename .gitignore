@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.agents/
+.claude/
+.diagnostics/
+.codex/
+.archive/
+.venv/
+*.egg-info/
+.pytest_cache/
