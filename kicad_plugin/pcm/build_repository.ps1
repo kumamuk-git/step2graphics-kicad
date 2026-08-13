@@ -50,7 +50,7 @@ $packagesDocument = [ordered]@{
     packages = @($metadata)
 }
 $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
-$packagesJson = $packagesDocument | ConvertTo-Json -Depth 20
+$packagesJson = ($packagesDocument | ConvertTo-Json -Depth 20) -replace "`r`n", "`n"
 [System.IO.File]::WriteAllText($packagesPath, $packagesJson + "`n", $utf8NoBom)
 
 $packagesHash = (Get-FileHash -LiteralPath $packagesPath -Algorithm SHA256).Hash.ToLowerInvariant()
@@ -71,7 +71,7 @@ $repositoryDocument = [ordered]@{
     }
 }
 $repositoryPath = Join-Path $outputRoot 'repository.json'
-$repositoryJson = $repositoryDocument | ConvertTo-Json -Depth 20
+$repositoryJson = ($repositoryDocument | ConvertTo-Json -Depth 20) -replace "`r`n", "`n"
 [System.IO.File]::WriteAllText($repositoryPath, $repositoryJson + "`n", $utf8NoBom)
 
 [PSCustomObject]@{

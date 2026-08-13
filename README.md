@@ -4,7 +4,7 @@ STEPモデルを6方向から正投影し、KiCad 10 PCB Editorへ線グラフ�
 
 ![KiCad](https://img.shields.io/badge/KiCad-10.0-314CB0)
 ![Platform](https://img.shields.io/badge/platform-Windows-0078D4)
-![Version](https://img.shields.io/badge/version-0.3.0-green)
+![Version](https://img.shields.io/badge/version-0.3.1-green)
 
 ## 機能
 
@@ -33,7 +33,7 @@ https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/main/repositor
 
 ### ZIPからインストール
 
-1. [最新のPCMパッケージ](kicad_plugin/pcm/dist/step2graphics-kicad10-action-plugin-0.3.0.zip)を取得する。
+1. [最新のPCMパッケージ](kicad_plugin/pcm/dist/step2graphics-kicad10-action-plugin-0.3.1.zip)を取得する。
 2. KiCadの「プラグイン＆コンテンツ マネージャー」を開く。
 3. 「ファイルからインストール…」でZIPを選ぶ。
 4. 保留中の変更を適用し、PCB Editorを再起動する。
