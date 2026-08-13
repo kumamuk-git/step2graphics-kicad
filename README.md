@@ -26,7 +26,7 @@ STEP解析にはOpenCASCADEを使用します。初回実行時にプラグイ�
 KiCadの「プラグイン＆コンテンツ マネージャー」から「リポジトリを管理」を開き、次のURLを追加します。
 
 ```text
-https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/main/repository.json
+https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/refs/heads/main/repository.json
 ```
 
 追加後、リポジトリを`STEP Projection Importer Repository`へ切り替えて更新すると、`STEP Projection Importer`を一覧からインストールできます。
