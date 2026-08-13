@@ -32,7 +32,7 @@
                                                                 "windows"
                                                             ],
                                               "runtime":  "swig",
-                                              "download_url":  "https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/main/kicad_plugin/pcm/dist/step2graphics-kicad10-action-plugin-0.3.0.zip",
+                                              "download_url":  "https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/v0.3.0/kicad_plugin/pcm/dist/step2graphics-kicad10-action-plugin-0.3.0.zip",
                                               "download_sha256":  "02d6f615789124a5d50752c9728dac38bfea923ce70519200cb27b412fc9515b",
                                               "download_size":  13097,
                                               "install_size":  41047

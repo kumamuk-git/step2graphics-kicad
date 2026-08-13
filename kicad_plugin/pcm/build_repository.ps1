@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [string]$RepositoryBaseUrl = 'https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/main',
+    [string]$RepositoryBaseUrl = '',
     [string]$OutputDirectory = ''
 )
 
@@ -17,6 +17,12 @@ $outputRoot = (Resolve-Path -LiteralPath $OutputDirectory).Path
 $metadataPath = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot 'metadata.json')).Path
 $metadata = Get-Content -LiteralPath $metadataPath -Raw -Encoding UTF8 | ConvertFrom-Json
 $version = $metadata.versions[0]
+if ([string]::IsNullOrWhiteSpace($RepositoryBaseUrl)) {
+    $RepositoryBaseUrl = (
+        'https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/v' +
+        $version.version
+    )
+}
 $archiveName = "step2graphics-kicad10-action-plugin-$($version.version).zip"
 $archivePath = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "dist\$archiveName")).Path
 $archive = Get-Item -LiteralPath $archivePath

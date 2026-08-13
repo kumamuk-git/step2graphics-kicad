@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [string]$RepositoryBaseUrl = 'https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/main'
+    [string]$RepositoryBaseUrl = ''
 )
 
 $ErrorActionPreference = 'Stop'
