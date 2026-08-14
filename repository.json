@@ -9,9 +9,9 @@
                                    }
                    },
     "packages":  {
-                     "url":  "https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/v0.3.1/packages.json",
-                     "sha256":  "565db10870cbcb13f2514b223cbe13ffd294fd2434676e892228e08da00204f7",
-                     "update_timestamp":  1786690014,
-                     "update_time_utc":  "2026-08-14 06:46:54"
+                     "url":  "https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/v0.3.2/packages.json",
+                     "sha256":  "e115a84d7c76b1933d9602c3adb82f26bb572bce058111dd1720b73d6dcb05ed",
+                     "update_timestamp":  1786690264,
+                     "update_time_utc":  "2026-08-14 06:51:04"
                  }
 }

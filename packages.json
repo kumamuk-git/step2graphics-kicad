@@ -25,15 +25,15 @@
                                   ],
                          "versions":  [
                                           {
-                                              "version":  "0.3.1",
+                                              "version":  "0.3.2",
                                               "status":  "testing",
                                               "kicad_version":  "10.0",
                                               "platforms":  [
                                                                 "windows"
                                                             ],
                                               "runtime":  "swig",
-                                              "download_url":  "https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/v0.3.1/kicad_plugin/pcm/dist/step2graphics-kicad10-action-plugin-0.3.1.zip",
-                                              "download_sha256":  "d80edadc22c0bdfe1cec41119805cc666508b1292345da48b7a334aef45b325d",
+                                              "download_url":  "https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/v0.3.2/kicad_plugin/pcm/dist/step2graphics-kicad10-action-plugin-0.3.2.zip",
+                                              "download_sha256":  "771e0cfeaa7ff1ef067d293578571c34c4374f152dfac5de8b67ab66ec203a8e",
                                               "download_size":  13087,
                                               "install_size":  41038
                                           }
