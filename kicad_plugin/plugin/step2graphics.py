@@ -21,7 +21,7 @@ except (ImportError, ModuleNotFoundError):
 
 
 T = TypeVar("T")
-PLUGIN_ID = "jp.tasko.step2graphics"
+PLUGIN_ID = "kuma.step2graphics"
 OCP_REQUIREMENT = "cadquery-ocp-novtk==7.9.3.1.1"
 AXES = ["+Z", "-Z", "+X", "-X", "+Y", "-Y"]
 AXIS_PLANES = {

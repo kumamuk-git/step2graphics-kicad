@@ -60,8 +60,8 @@ $repositoryDocument = [ordered]@{
     name = 'STEP Projection Importer Repository'
     schema_version = 2
     maintainer = [ordered]@{
-        name = 'TASKO'
-        contact = @{}
+        name = $metadata.author.name
+        contact = $metadata.author.contact
     }
     packages = [ordered]@{
         url = "$RepositoryBaseUrl/packages.json"

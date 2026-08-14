@@ -21,9 +21,15 @@ class RepositoryMetadataTests(unittest.TestCase):
     def test_repository_points_to_matching_packages_document(self):
         expected_hash = hashlib.sha256(self.packages_bytes).hexdigest()
         self.assertEqual(self.repository["schema_version"], 2)
+        self.assertEqual(self.repository["maintainer"]["name"], "kuma")
         self.assertEqual(self.repository["packages"]["sha256"], expected_hash)
         self.assertTrue(self.repository["packages"]["url"].endswith("/packages.json"))
         self.assertNotIn(b"\r\n", self.packages_bytes)
+
+    def test_package_identity_matches_owner(self):
+        package = self.packages["packages"][0]
+        self.assertEqual(package["identifier"], "kuma.step2graphics")
+        self.assertEqual(package["author"]["name"], "kuma")
 
     def test_package_download_metadata_matches_archive(self):
         package = self.packages["packages"][0]

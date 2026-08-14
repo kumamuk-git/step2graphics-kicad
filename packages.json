@@ -5,10 +5,10 @@
                          "name":  "STEP Projection Importer",
                          "description":  "Preview and import an orthographic STEP projection as grouped PCB graphics.",
                          "description_full":  "A KiCad 10 Action Plugin that accepts STEP files by picker or drag and drop, previews the selected projection plane, merges touching collinear segments, and adds the result to the PCB Editor as a selectable group. OpenCASCADE runs locally in an external Python process. Docker and an external conversion server are not required.",
-                         "identifier":  "jp.tasko.step2graphics",
+                         "identifier":  "kuma.step2graphics",
                          "type":  "plugin",
                          "author":  {
-                                        "name":  "TASKO",
+                                        "name":  "kuma",
                                         "contact":  {
 
                                                     }
@@ -33,9 +33,9 @@
                                                             ],
                                               "runtime":  "swig",
                                               "download_url":  "https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/v0.3.1/kicad_plugin/pcm/dist/step2graphics-kicad10-action-plugin-0.3.1.zip",
-                                              "download_sha256":  "0f7390ad9e35ba0968963fdeeea6ea4e943985bc056106795490f109ca1c817d",
-                                              "download_size":  13098,
-                                              "install_size":  41047
+                                              "download_sha256":  "d80edadc22c0bdfe1cec41119805cc666508b1292345da48b7a334aef45b325d",
+                                              "download_size":  13087,
+                                              "install_size":  41038
                                           }
                                       ]
                      }

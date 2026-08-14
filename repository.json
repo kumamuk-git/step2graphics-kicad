@@ -3,15 +3,15 @@
     "name":  "STEP Projection Importer Repository",
     "schema_version":  2,
     "maintainer":  {
-                       "name":  "TASKO",
+                       "name":  "kuma",
                        "contact":  {
 
                                    }
                    },
     "packages":  {
                      "url":  "https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/v0.3.1/packages.json",
-                     "sha256":  "d8fae58164e2cc758e40281bb82be867913fba6aff538be6e12fb60f6a06e309",
-                     "update_timestamp":  1786640308,
-                     "update_time_utc":  "2026-08-13 16:58:28"
+                     "sha256":  "565db10870cbcb13f2514b223cbe13ffd294fd2434676e892228e08da00204f7",
+                     "update_timestamp":  1786690014,
+                     "update_time_utc":  "2026-08-14 06:46:54"
                  }
 }
