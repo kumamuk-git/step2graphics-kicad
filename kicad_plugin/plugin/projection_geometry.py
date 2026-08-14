@@ -183,6 +183,7 @@ def projection_to_segments(
     *,
     center_mm: tuple[float, float],
     include_hidden: bool = False,
+    outline_only: bool = False,
     flip_y: bool = True,
     merge_collinear: bool = True,
     merge_endpoint_tolerance_mm: float = 0.001,
@@ -193,14 +194,28 @@ def projection_to_segments(
     if max_segments < 1:
         raise ValueError("max_segments must be positive")
 
-    source_center = _bounds_center(projection)
     target_center = _point(center_mm)
     segment_keys: set[tuple[tuple[int, int], tuple[int, int]]] = set()
     segments: list[Segment2D] = []
 
-    groups = [(projection.get("visible"), False, "visible")]
-    if include_hidden:
-        groups.append((projection.get("hidden"), True, "hidden"))
+    if outline_only:
+        outline = list(_polylines(projection.get("outline"), "outline"))
+        if not outline or not any(len(polyline) >= 2 for polyline in outline):
+            raise ProjectionDataError(
+                "この投影方向ではEdge.Cuts用の閉じた平面外形を取得できません。"
+            )
+        outline_points = [point for polyline in outline for point in polyline]
+        minimum_x = min(point[0] for point in outline_points)
+        maximum_x = max(point[0] for point in outline_points)
+        minimum_y = min(point[1] for point in outline_points)
+        maximum_y = max(point[1] for point in outline_points)
+        source_center = ((minimum_x + maximum_x) * 0.5, (minimum_y + maximum_y) * 0.5)
+        groups = [(outline, False, "outline")]
+    else:
+        source_center = _bounds_center(projection)
+        groups = [(projection.get("visible"), False, "visible")]
+        if include_hidden:
+            groups.append((projection.get("hidden"), True, "hidden"))
 
     def transform(point: tuple[float, float]) -> tuple[float, float]:
         x = target_center[0] + point[0] - source_center[0]

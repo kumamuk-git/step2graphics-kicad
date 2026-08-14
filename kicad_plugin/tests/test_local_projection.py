@@ -10,9 +10,11 @@ PLUGIN_DIR = Path(__file__).resolve().parents[1] / "plugin"
 sys.path.insert(0, str(PLUGIN_DIR))
 
 try:
+    from OCP.BRepAlgoAPI import BRepAlgoAPI_Cut
     from OCP.BRepPrimAPI import BRepPrimAPI_MakeBox, BRepPrimAPI_MakeCylinder
     from OCP.IFSelect import IFSelect_RetDone
     from OCP.STEPControl import STEPControl_AsIs, STEPControl_Writer
+    from OCP.gp import gp_Ax2, gp_Dir, gp_Pnt
     from local_projection import project_shape, project_step
 except ModuleNotFoundError:
     project_shape = None
@@ -55,6 +57,23 @@ class LocalProjectionTests(unittest.TestCase):
         shape = BRepPrimAPI_MakeCylinder(10.0, 20.0).Shape()
         projection = project_shape(shape, "+Z", curve_tolerance_mm=0.05)
         self.assertTrue(any(len(polyline) > 8 for polyline in projection["visible"]))
+
+    def test_extracts_closed_planar_outline(self):
+        shape = BRepPrimAPI_MakeBox(10.0, 20.0, 30.0).Shape()
+        outline = project_shape(shape, "+Z")["outline"]
+
+        self.assertEqual(len(outline), 1)
+        self.assertEqual(outline[0][0], outline[0][-1])
+
+    def test_planar_outline_preserves_inner_cutouts(self):
+        board = BRepPrimAPI_MakeBox(20.0, 10.0, 1.0).Shape()
+        hole_axis = gp_Ax2(gp_Pnt(5.0, 5.0, 0.0), gp_Dir(0.0, 0.0, 1.0))
+        hole = BRepPrimAPI_MakeCylinder(hole_axis, 1.0, 1.0).Shape()
+        shape = BRepAlgoAPI_Cut(board, hole).Shape()
+        outline = project_shape(shape, "+Z", curve_tolerance_mm=0.05)["outline"]
+
+        self.assertEqual(len(outline), 2)
+        self.assertTrue(all(polyline[0] == polyline[-1] for polyline in outline))
 
     def test_reads_step_file_without_external_service(self):
         shape = BRepPrimAPI_MakeBox(4.0, 5.0, 6.0).Shape()

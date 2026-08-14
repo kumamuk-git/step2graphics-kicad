@@ -46,6 +46,29 @@ class ProjectionGeometryTests(unittest.TestCase):
         self.assertEqual(len(all_lines), 3)
         self.assertTrue(all_lines[-1].hidden)
 
+    def test_outline_only_returns_exactly_closed_loops(self):
+        projection = dict(self.projection)
+        projection["outline"] = [
+            [[0, 0], [10, 0], [10, 20], [0, 20], [0, 0]],
+        ]
+        segments = projection_to_segments(
+            projection,
+            center_mm=(0, 0),
+            outline_only=True,
+        )
+
+        endpoints = [point for segment in segments for point in (segment.start, segment.end)]
+        self.assertEqual(len(segments), 4)
+        self.assertTrue(all(endpoints.count(point) == 2 for point in set(endpoints)))
+
+    def test_outline_only_rejects_missing_planar_outline(self):
+        with self.assertRaises(ProjectionDataError):
+            projection_to_segments(
+                self.projection,
+                center_mm=(0, 0),
+                outline_only=True,
+            )
+
     def test_can_keep_mathematical_y_direction(self):
         segments = projection_to_segments(
             self.projection,

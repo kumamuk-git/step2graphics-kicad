@@ -4,7 +4,7 @@ STEPモデルを6方向から正投影し、KiCad 10 PCB Editorへ線グラフ�
 
 ![KiCad](https://img.shields.io/badge/KiCad-10.0-314CB0)
 ![Platform](https://img.shields.io/badge/platform-Windows-0078D4)
-![Version](https://img.shields.io/badge/version-0.3.2-green)
+![Version](https://img.shields.io/badge/version-0.3.3-green)
 
 ## 機能
 
@@ -15,6 +15,7 @@ STEPモデルを6方向から正投影し、KiCad 10 PCB Editorへ線グラフ�
 - 同一直線上に分割された線分の統合
 - 生成アイテムのグループ化と選択
 - `Dwgs.User`、`Edge.Cuts`、`F.Fab`などへの直接配置
+- `Edge.Cuts`選択時は最大平面フェイスの外周と内側切り抜きを閉ループとして配置
 - Docker・Webサーバー不要
 
 STEP解析にはOpenCASCADEを使用します。初回実行時にプラグイン専用Python環境へ依存パッケージをインストールします。
@@ -33,7 +34,7 @@ https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/refs/heads/mai
 
 ### ZIPからインストール
 
-1. [最新のPCMパッケージ](kicad_plugin/pcm/dist/step2graphics-kicad10-action-plugin-0.3.2.zip)を取得する。
+1. [最新のPCMパッケージ](kicad_plugin/pcm/dist/step2graphics-kicad10-action-plugin-0.3.3.zip)を取得する。
 2. KiCadの「プラグイン＆コンテンツ マネージャー」を開く。
 3. 「ファイルからインストール…」でZIPを選ぶ。
 4. 保留中の変更を適用し、PCB Editorを再起動する。
@@ -49,3 +50,5 @@ https://raw.githubusercontent.com/kumamuk-git/step2graphics-kicad/refs/heads/mai
 4. 「読み込む」を押す。
 
 生成線分は既定で`STEP投影: ファイル名`という1グループになり、そのグループが選択されます。同一直線上の線分は、既定で端点許容差`0.001 mm`、角度許容差`0.05°`の範囲で統合されます。角をまたいだ統合は行いません。
+
+`Edge.Cuts`では、選択した投影方向に平行な最大平面フェイスから閉じた輪郭を取得します。適切な平面外形を取得できない方向では、不完全な基板外形を作らずエラーを表示します。

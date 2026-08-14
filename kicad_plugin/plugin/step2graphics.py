@@ -273,6 +273,7 @@ class ImportDialog(wx.Dialog):
         preview_button.Bind(wx.EVT_BUTTON, self._on_preview)
         self.file_picker.Bind(wx.EVT_FILEPICKER_CHANGED, self._on_file_changed)
         self.axis.Bind(wx.EVT_CHOICE, self._on_axis_changed)
+        self.layer.Bind(wx.EVT_CHOICE, self._on_preview_option_changed)
         for control in (self.include_hidden, self.flip_y, self.merge_collinear):
             control.Bind(wx.EVT_CHECKBOX, self._on_preview_option_changed)
         for control in (self.merge_endpoint_tolerance, self.merge_angle_tolerance):
@@ -360,6 +361,7 @@ class ImportDialog(wx.Dialog):
                 self._preview_projection,
                 center_mm=(0.0, 0.0),
                 include_hidden=self.include_hidden.GetValue(),
+                outline_only=self.layer.GetStringSelection() == "Edge.Cuts",
                 flip_y=self.flip_y.GetValue(),
                 merge_collinear=self.merge_collinear.GetValue(),
                 merge_endpoint_tolerance_mm=self.merge_endpoint_tolerance.GetValue(),
@@ -634,6 +636,7 @@ def run() -> None:
             projection,
             center_mm=options.center_mm,
             include_hidden=options.include_hidden,
+            outline_only=options.layer == "Edge.Cuts",
             flip_y=options.flip_y,
             merge_collinear=options.merge_collinear,
             merge_endpoint_tolerance_mm=options.merge_endpoint_tolerance_mm,
